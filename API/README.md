@@ -1,9 +1,9 @@
 # 10Heures
-## Un faux service de streaming musical. Uniquement à des fins d'apprentissage.
+## A fake cusic streaming website for learning purposes
 
-### Liste des roles avec numéros
-- 0 - Utilisateur standar non vérifié
-- 1 - Utilisateur standar Vérifié
-- 2 - Créateur (il faut qu'il ai créé un compte standar et qu'un administrateur l'ai autorisé)
-- 3 - Administrateur non vérifié (Uniquement pour le premier compte créé, après, un administrateur devra promouvoir un utilisateur standar)
-- 4 - Administrateur
+### Listof the roles with their nums
+- 0 - Standar non verified user
+- 1 - Standar verified user
+- 2 - Creator (need a standar account and be promoted by an admin)
+- 3 - Non verified administrator (Only the first account created is a non verified administrator, after that, a standar user is promoted as an administrator)
+- 4 - Administrator
