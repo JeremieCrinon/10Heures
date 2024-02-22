@@ -21,5 +21,7 @@ use App\Http\Controllers\LoginController;
 
 Route::post('/register', [LoginController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/verify-mail', [LoginController::class, 'verifyMail']);
+Route::post('/isUserConnected', [LoginController::class, 'isUserConnected']);
 
 
