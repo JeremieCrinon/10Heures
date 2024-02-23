@@ -3,5 +3,11 @@
     "loginHeader.login": "Se connecter",
     "loginHeader.register": "S'inscrire",
     "login.password": "Mot de passe",
-    "login.submit": "Se connecter"
+    "login.submit": "Se connecter",
+    "register.title": "S'inscrire",
+    "register.name": "Nom",
+    "register.password": "Mot de passe",
+    "register.password_confirmation": "Confirmer le mot de passe",
+    "register.submit": "S'inscrire",
+    "register.success": "Inscription réussie, veuillez vérifier votre mail et vous connecter !"
 }

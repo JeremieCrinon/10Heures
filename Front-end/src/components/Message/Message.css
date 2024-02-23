@@ -1,0 +1,10 @@
+.message{
+    margin: 2rem auto;
+    background-color: #44AA22;
+    width: max-content;
+}
+
+.message p{
+    padding: 2rem;
+    text-align: center;
+}

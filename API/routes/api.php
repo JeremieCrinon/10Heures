@@ -23,5 +23,6 @@ Route::post('/register', [LoginController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/verify-mail', [LoginController::class, 'verifyMail']);
 Route::post('/isUserConnected', [LoginController::class, 'isUserConnected']);
+// Route::post('/resend-verification-mail', [LoginController::class, 'resendVerificationEmail']);
 
 

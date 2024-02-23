@@ -56,7 +56,16 @@ class LoginController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = password_hash($request->password, PASSWORD_DEFAULT);
-        if(User::all()->count() == 0){
+        // if(User::all()->count() == 0){
+        //     $user->role = 3;
+        // } else {
+        //     $user->role = 0;
+        // }
+        $countAdmin = User::where('role', 3)
+              ->orWhere('role', 4)
+              ->count();
+
+        if ($countAdmin <= 0) {
             $user->role = 3;
         } else {
             $user->role = 0;
@@ -74,8 +83,11 @@ class LoginController extends Controller
             ], 500);
         }
 
+        $delete_token = Hash::make($user->id . '|' . now());
+
         return response()->json([
-            'message' => 'The user has been created, please verify the mail!'
+            'message' => 'The user has been created, please verify the mail!',
+            'delete_token' => $delete_token
         ], 201);
 
         // $message = 'The user has been created, please verify the mail!';
@@ -102,7 +114,7 @@ class LoginController extends Controller
 
         // Log::info(config('app.url'));
 
-        $url = 'http://localhost:3000/verify_mail.html?' . $token;
+        $url = 'http://localhost:3000/verify_mail?token=' . $token;
 
         Mail::raw('Please click on this link to verify your email: ' . $url, function ($message) use ($user) {
             $message->to($user->email);
@@ -164,6 +176,33 @@ class LoginController extends Controller
             'message' => $message,
             'role' => $user->role,
             'isConnected' => true,
+        ];
+
+        return response()->json($response, 200);
+    }
+
+    public function resendVerificationEmail(Request $request)
+    {
+        $token = $request->token;
+        $user = User::where('delete_token', $token)->first();
+        if (!$user) {
+            return response()->json([
+                'message' => 'The token is incorrect.'
+            ], 401);
+        }
+
+        $mailResult = $this->sendVerificationEmail($user->email);
+
+        if (!$mailResult) {
+            return response()->json([
+                'message' => 'A problem while sending the mail has occured.'
+            ], 500);
+        }
+
+        $message = 'The email has been sent';
+
+        $response = [
+            'message' => $message
         ];
 
         return response()->json($response, 200);

@@ -82,6 +82,8 @@ export default function main() {
                   <Route path="/register" element={<Register />} />
                   <Route path="/discover" element={<Login />} />
                   <Route path="/playlist" element={<Login />} />
+                  <Route path="/verif_mail" element={<Login />} />
+                  <Route path="/500" element={<Error500 />} />
                   <Route path="*" element={<NoPage />} />
               </Routes>
           </BrowserRouter>
@@ -100,6 +102,7 @@ export default function main() {
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/login" element={<Home />} />
         <Route path="/register" element={<Home />} />
+        <Route path="/500" element={<Error500 />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>
