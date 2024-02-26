@@ -26,7 +26,8 @@ export default function Register(){
             return response.json();
         })
         .then(data => {
-                localStorage.setItem('message', t('register.success'));
+                // localStorage.setItem('message', t('register.success'));
+                localStorage.setItem('message', 'Votre compte a bien été créé');
                 window.location.href = '/login';
         })
     }

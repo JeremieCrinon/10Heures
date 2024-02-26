@@ -13,7 +13,7 @@ export default function Message(){
         let error = localStorage.getItem('error');
         localStorage.removeItem('error');
         return (
-            <div className='message'>
+            <div className='error'>
                 <p>{error}</p>
             </div>
         )

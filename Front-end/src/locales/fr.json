@@ -9,5 +9,6 @@
     "register.password": "Mot de passe",
     "register.password_confirmation": "Confirmer le mot de passe",
     "register.submit": "S'inscrire",
-    "register.success": "Inscription réussie, veuillez vérifier votre mail et vous connecter !"
+    "register.success": "Inscription réussie, veuillez vérifier votre mail et vous connecter !",
+    "404": "Erreur 404 : Page non trouvée ! Essayez plutot de chercher un poulpe, ils sont plus faciles à trouver !"
 }

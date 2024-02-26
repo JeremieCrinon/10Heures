@@ -20,12 +20,20 @@ class LoginController extends Controller
             ], 401);
         }
 
-        if($user->role == 0){
+        if($user->role == 0  || $user->role == 3){
             $delete_token = Hash::make($user->id . '|' . now());
             return response()->json([
                 'message' => 'Please verify your email before connecting.',
                 'delete_token' => $delete_token
             ], 403);
+        }
+
+        if($user->role == -1){
+            return response()->json([
+                'message' => 'You are banned!',
+                'token' => 'banned',
+                'role' => -1
+            ], 200);
         }
 
         $token = Hash::make($user->id . '|' . now());
@@ -67,6 +75,13 @@ class LoginController extends Controller
 
         if ($countAdmin <= 0) {
             $user->role = 3;
+            // $user->permissions = '{"platform.systems.roles":true,"platform.systems.users":true,"platform.systems.attachment":true,"platform.index":true}';
+            $user->permissions = [
+                'platform.systems.roles' => true,
+                'platform.systems.users' => true,
+                'platform.systems.attachment' => true,
+                'platform.index' => true
+            ];
         } else {
             $user->role = 0;
         }
@@ -166,6 +181,13 @@ class LoginController extends Controller
         if (!$user) {
             return response()->json([
                 'message' => 'The token is incorrect.',
+                'isConnected' => false,
+            ], 200);
+        }
+
+        if($user->role == -1){
+            return response()->json([
+                'message' => 'You are banned!',
                 'isConnected' => false,
             ], 200);
         }

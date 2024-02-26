@@ -60,12 +60,16 @@ export default function Login(){
             
         })
         .then(data => {
-                // localStorage.setItem('token', data.token);
-                // localStorage.setItem('role', data.role);
-                // On stocke le token dans un cookie
+            if (data.role == -1){
+                // localStorage.setItem('error', 'Votre compte a été banni ! On ne veux plus de vous !');
+                alert('Votre compte a été banni ! On ne veux plus de vous !');
+                window.location.href = '/login';
+            } else {
                 document.cookie = `token=${data.token}`;
                 document.cookie = `role=${data.role}`;
                 window.location.href = '/';
+            }
+                
         })
         .catch(error => {
             console.error('Erreur:', error);

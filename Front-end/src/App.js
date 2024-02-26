@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import Home from './pages/Home';
@@ -12,6 +12,8 @@ import { useTranslation } from 'react-i18next';
 import './i18n';
 import Error500 from './pages/Error500';
 import './index.css';
+
+
 
 export default function main() {
 
@@ -27,23 +29,29 @@ export default function main() {
   const role = getCookie('role');
 
 
-  let isConnected = true;
+  // let isConnected = true;
+  const [isConnected, setIsConnected] = useState(token == null);
 
 
-  if(token == null){
-      isConnected = false;
-  }
+  // if(token == null){
+  //     // isConnected = false;
+  //     setIsConnected(false);
+  // }
 
   let form = new FormData();
 
   form.append('token', token);
 
-  fetch('http://localhost:8000/api/isUserConnected', {
+  useEffect(() => {
+    fetch('http://localhost:8000/api/isUserConnected', {
       method: 'POST',
       body: form
-      }).then(response => response.json())
+      })
+      .then(response => response.json())
       .then(data => {
-          isConnected = data.isConnected;
+          console.log(data);
+          // isConnected = data.isConnected;
+          setIsConnected(data.isConnected);
       })
       .catch(error => {
           console.error("Erreur lors de la récupération des données:", error)
@@ -51,7 +59,10 @@ export default function main() {
             <Error500 />
           )
       });
-  // On vérifie si l'utilisateur est connecté
+  })
+
+  
+
 
   // On fais une fonction qui permets de changer la langue
   const { t, i18n } = useTranslation(); // On utilise la fonction t pour traduire les textes, on pourra se servir de cette fonction dans notre html
@@ -70,7 +81,7 @@ export default function main() {
   // On fais une fonction qui permets de changer la langue
 
   // Si l'utilisateur n'est pas connecté, on affiche la page de connexion
-  if(isConnected == false){
+  if(!isConnected){
       return (
           <BrowserRouter>
 
@@ -82,7 +93,7 @@ export default function main() {
                   <Route path="/register" element={<Register />} />
                   <Route path="/discover" element={<Login />} />
                   <Route path="/playlist" element={<Login />} />
-                  <Route path="/verif_mail" element={<Login />} />
+                  <Route path="/verify_mail" element={<Login />} />
                   <Route path="/500" element={<Error500 />} />
                   <Route path="*" element={<NoPage />} />
               </Routes>
@@ -102,6 +113,7 @@ export default function main() {
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/login" element={<Home />} />
         <Route path="/register" element={<Home />} />
+        <Route path="/verify_mail" element={<Home />} />
         <Route path="/500" element={<Error500 />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
