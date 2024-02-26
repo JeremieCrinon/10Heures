@@ -1,4 +1,16 @@
 export default function Header() {
+
+    function getCookie(name) {
+        let cookieArray = document.cookie.split('; ');
+        let cookie = cookieArray.find(row => row.startsWith(name + '='));
+        return cookie ? cookie.split('=')[1] : null;
+    }
+    
+    // On récupert le cookie token et role
+    const token = getCookie('token');
+    const role = getCookie('role');
+    
+
     return (
         <header className="website--header">
             <svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" className="website--header--logo">
@@ -12,6 +24,9 @@ export default function Header() {
                     <li><a href="/">Home</a></li>
                     <li><a href="/discover">Discover</a></li>
                     <li><a href="/playlists">Playlists</a></li>
+                    <li><a href="/account">Account</a></li>
+                    {role === "2" || role === "4" ? <li><a href="/music_post">Post new music</a></li> : null}
+                    {role === "4" ? <li><a href="http://localhost:8000/admin">Administration</a></li> : null}
                 </ul>
             </nav>
 
