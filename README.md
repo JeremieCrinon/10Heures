@@ -2,6 +2,7 @@
 ## A fake music streaming website for learning purposes
 
 ### Listof the roles with their nums
+- -1 - Banned user
 - 0 - Standar non verified user
 - 1 - Standar verified user
 - 2 - Creator (need a standar account and be promoted by an admin)
