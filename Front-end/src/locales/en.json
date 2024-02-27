@@ -10,5 +10,11 @@
     "register.password_confirmation": "Confirm Password",
     "register.submit": "Register",
     "register.success": "You have been registered successfully, please verify your mail and connect !",
-    "404": "Error 404 : page not found ! Search for an octopus instead, they are easier to find !"
+    "404": "Error 404 : page not found ! Search for an octopus instead, they are easier to find !",
+    "header.home": "Home",
+    "header.discover": "Discover",
+    "header.playlists": "Playlists",
+    "header.account": "Account",
+    "header.music": "Publish a music",
+    "header.admin": "Admin"
 }

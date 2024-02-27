@@ -59,7 +59,7 @@ export default function main() {
             <Error500 />
           )
       });
-  })
+  }, []);
 
   
 
@@ -80,6 +80,9 @@ export default function main() {
   }, []);
   // On fais une fonction qui permets de changer la langue
 
+
+  
+
   // Si l'utilisateur n'est pas connecté, on affiche la page de connexion
   if(!isConnected){
       return (
@@ -92,7 +95,7 @@ export default function main() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/discover" element={<Login />} />
-                  <Route path="/playlist" element={<Login />} />
+                  <Route path="/playlists" element={<Login />} />
                   <Route path="/verify_mail" element={<Login />} />
                   <Route path="/500" element={<Error500 />} />
                   <Route path="*" element={<NoPage />} />
@@ -105,12 +108,12 @@ export default function main() {
   // Si l'utilisateur est connecté, on affiche la page principale
   return (
     <BrowserRouter>
-      <Header />
+      <Header changeLanguage={changeLanguage} />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/discover" element={<Discover />} />
-        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/playlists" element={<Playlist />} />
         <Route path="/login" element={<Home />} />
         <Route path="/register" element={<Home />} />
         <Route path="/verify_mail" element={<Home />} />

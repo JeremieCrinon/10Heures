@@ -10,5 +10,11 @@
     "register.password_confirmation": "Confirmer le mot de passe",
     "register.submit": "S'inscrire",
     "register.success": "Inscription réussie, veuillez vérifier votre mail et vous connecter !",
-    "404": "Erreur 404 : Page non trouvée ! Essayez plutot de chercher un poulpe, ils sont plus faciles à trouver !"
+    "404": "Erreur 404 : Page non trouvée ! Essayez plutot de chercher un poulpe, ils sont plus faciles à trouver !",
+    "header.home": "Accueil",
+    "header.discover": "Découvrir",
+    "header.playlists": "Playlists",
+    "header.account": "Compte",
+    "header.music": "Publier une musique",
+    "header.admin": "Admin"
 }

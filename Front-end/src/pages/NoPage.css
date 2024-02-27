@@ -1,6 +1,7 @@
 .octopus--svg{
     width: 20%;
     margin: 5rem;
+    cursor: pointer;
 }
 
 h1{
