@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MusicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,9 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/verify-mail', [LoginController::class, 'verifyMail']);
 Route::post('/isUserConnected', [LoginController::class, 'isUserConnected']);
 // Route::post('/resend-verification-mail', [LoginController::class, 'resendVerificationEmail']);
+
+Route::middleware('auth.musician')->group(function () {
+    Route::post('/publish-music', [MusicController::class, 'store']);
+});
 
 
