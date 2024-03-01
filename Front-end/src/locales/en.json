@@ -16,5 +16,11 @@
     "header.playlists": "Playlists",
     "header.account": "Account",
     "header.music": "Publish a music",
-    "header.admin": "Admin"
+    "header.admin": "Admin",
+    "MusicPost.title": "Publish a new music",
+    "MusicPost.form.title": "Title",
+    "MusicPost.form.submit": "Publish the music",
+    "MusicPost.form.file": "File of the music",
+    "MusicPost.nonCompleteForm": "Please fill in the form !",
+    "MusicPost.success": "Music successfully published !"
 }

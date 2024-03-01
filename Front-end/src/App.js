@@ -7,6 +7,7 @@ import Playlist from './pages/Playlist';
 import NoPage from './pages/NoPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import MusicPost from './pages/MusicPost';
 import LoginHeader from './components/LoginHeader/LoginHeader';
 import { useTranslation } from 'react-i18next';
 import './i18n';
@@ -96,6 +97,7 @@ export default function main() {
                   <Route path="/register" element={<Register />} />
                   <Route path="/discover" element={<Login />} />
                   <Route path="/playlists" element={<Login />} />
+                  <Route path="/music_post" element={<Login />} />
                   <Route path="/verify_mail" element={<Login />} />
                   <Route path="/500" element={<Error500 />} />
                   <Route path="*" element={<NoPage />} />
@@ -114,6 +116,7 @@ export default function main() {
         <Route path="/" element={<Home />} />
         <Route path="/discover" element={<Discover />} />
         <Route path="/playlists" element={<Playlist />} />
+        <Route path="/music_post" element={<MusicPost />} />
         <Route path="/login" element={<Home />} />
         <Route path="/register" element={<Home />} />
         <Route path="/verify_mail" element={<Home />} />
