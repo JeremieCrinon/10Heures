@@ -73,4 +73,26 @@ class MusicController extends Controller
 
         
     }
+
+    public function index(){
+        // On select que le titre et l'artiste de chaque musique
+        $musics = Music::select('id', 'title', 'artist')->get();
+        return response()->json($musics, 200);
+    }
+
+    public function show($id){
+        $music = Music::find($id);
+        return response()->json($music, 200);
+    }
+
+    public function giveMusicPiece(Request $request){
+        $folderName = $request->folder_name;
+        $pieceNumber = $request->piece_number;
+
+        // dd($folderName, $pieceNumber);
+
+        $path = storage_path('app/public/music/' . $folderName . '/' . $pieceNumber . '.mp3');
+
+        return response()->download($path);
+    }
 }

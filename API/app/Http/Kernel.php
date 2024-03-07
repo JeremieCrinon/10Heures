@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
 
     protected $routeMiddleware = [
         'auth.musician' => \App\Http\Middleware\EnsureUserIsMusician::class,
+        'auth.registered' => \App\Http\Middleware\EnsureUserIsRegistered::class,
     ];
 }

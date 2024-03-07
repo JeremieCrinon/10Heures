@@ -30,4 +30,10 @@ Route::middleware('auth.musician')->group(function () {
     Route::post('/publish-music', [MusicController::class, 'store']);
 });
 
+Route::middleware('auth.registered')->group(function () {
+    Route::get('/musics', [MusicController::class, 'index']);
+    Route::get('/music/{id}', [MusicController::class, 'show']);
+    Route::post('/give_music_piece', [MusicController::class, 'giveMusicPiece']);
+});
+
 

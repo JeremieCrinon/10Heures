@@ -43,6 +43,8 @@ export default function main() {
 
   form.append('token', token);
 
+  // console.log(form);
+
   useEffect(() => {
     fetch('http://localhost:8000/api/isUserConnected', {
       method: 'POST',
@@ -56,9 +58,10 @@ export default function main() {
       })
       .catch(error => {
           console.error("Erreur lors de la récupération des données:", error)
-          return (
-            <Error500 />
-          )
+          if(window.location.pathname !== '/500'){
+            window.location.href = '/500';
+          }
+          
       });
   }, []);
 
